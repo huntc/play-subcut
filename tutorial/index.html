@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+    <title>
+        Template Template - Activator Template
+    </title>
+</head>
+<body>
+<div>
+    <h2>
+        Play with Dependency Injection using SubCut
+    </h2>
+
+    <p>
+        <a href="http://en.wikipedia.org/wiki/Dependency_injection" target="_blank">Dependency injection</a> is a design
+        pattern that frees your code from creational concerns, making your code cleaner and easier to test.
+    </p>
+
+    <p>
+        This tutorial illustrates how easy it is to use a dependency injection framework with Play.
+        <a href="https://github.com/dickwall/subcut/blob/master/GettingStarted.md" target="_blank">SubCut</a>
+        is used here. SubCut distinguishes itself by leveraging Scala's type system for dependency injection.
+    </p>
+
+    <p>
+        This tutorial will take about 10 minutes to complete and assumes that you are already familiar with the basics
+        of a Play application.
+    </p>
+</div>
+<div>
+    <h2>
+        The Mission
+    </h2>
+
+    <p>
+        The mission is to use the familiar starting point of a Play application and enhance it with dependency
+        injection. We will be taking the
+        <a href="#code/app/controllers/Application.scala" class="shortcut">Application</a> class and injecting a a
+        <a href="#code/app/services/TextGenerator.scala" class="shortcut">TextGenerator</a> instance into it.
+        TextGenerator is an abstract class and we have a concrete implementation of it in the form of
+        <a href="#code/app/services/TextGenerator.scala" class="shortcut">WelcomeTextGenerator</a>.
+    </p>
+
+    <p>
+        TextGenerator is a rudimentary service that simply generates text. You'll have more useful
+        services in your code e.g. a repository service that is backed by a concrete class to communicate with a
+        database. By using dependency injection we can configure the type of service required outside of the class that
+        needs to call on it.
+    </p>
+</div>
+<div>
+    <h2>
+        TBD
+    </h2>
+
+</div>
+<div>
+    <h2>
+        Conclusion
+    </h2>
+
+    <p>
+        This tutorial has introduced how SubCut can be used for developing Play applications. The Global object
+        establishes the dependency injection system and the routes file requires classes to be referenced via the '@' symbol.
+    </p>
+
+    <p>
+        By separating the creational concerns from a class, classes can remain focused on the job they are intended to
+        do and have their code remain clean and devoted to that purpose. In addition your classes will become more
+        testable, particularly from a unit test perspective, given that injectable types can easily be mocked.
+    </p>
+</div>
+</body>
+</html>
