@@ -10,12 +10,12 @@ object Global extends GlobalSettings {
   import NewBindingModule._
 
   object Context extends Injectable {
-    implicit val bindingModule: BindingModule = newBindingModule {
+    implicit val bindingModule : BindingModule = newBindingModule {
       module =>
         import module._
 
-        bind[TextGenerator] toSingle (new WelcomeTextGenerator)
-        bind[controllers.Application] toSingle (new controllers.Application)
+        bind[TextGenerator] toSingle new WelcomeTextGenerator
+        bind[controllers.Application] toSingle new controllers.Application
     }
 
     val application = inject[controllers.Application]
