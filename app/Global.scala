@@ -1,4 +1,5 @@
-import com.escalatesoft.subcut.inject.{BindingModule, Injectable, BindingId, NewBindingModule}
+import com.escalatesoft.subcut.inject._
+import config.StandardConfiguration
 import play.api.GlobalSettings
 import services.{TextGenerator, WelcomeTextGenerator}
 
@@ -7,16 +8,8 @@ import services.{TextGenerator, WelcomeTextGenerator}
  */
 object Global extends GlobalSettings {
 
-  import NewBindingModule._
-
   object Context extends Injectable {
-    implicit val bindingModule : BindingModule = newBindingModule {
-      module =>
-        import module._
-
-        bind[TextGenerator] toSingle new WelcomeTextGenerator
-        bind[controllers.Application] toSingle new controllers.Application
-    }
+    implicit val bindingModule = StandardConfiguration  // use the standard config by default
 
     val application = inject[controllers.Application]
     val applicationClass = classOf[controllers.Application]

@@ -1,7 +1,7 @@
 package controllers
 
 import play.api.mvc._
-import services.TextGenerator
+import services.{WelcomeTextGenerator, TextGenerator}
 import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
 
 /**
@@ -10,7 +10,8 @@ import com.escalatesoft.subcut.inject.{BindingModule, Injectable}
  */
 class Application(implicit val bindingModule: BindingModule) extends Controller with Injectable {
 
-  val textGenerator = inject[TextGenerator]
+  // injectOptional provides safe interception of bindings, but falling back on a default implementation otherwise
+  val textGenerator = injectOptional [TextGenerator] getOrElse new WelcomeTextGenerator
 
   def index = Action {
     Ok(views.html.index(textGenerator.welcomeText))
